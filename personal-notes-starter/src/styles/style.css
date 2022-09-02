@@ -82,7 +82,6 @@ input::placeholder, textarea::placeholder {
   padding: 8px;
   background-color: transparent;
   font-family: 'Inter', sans-serif;
-  color: white;
   border: 1px solid #aaa;
   border-radius: 4px;
   font-weight: bold;
@@ -136,6 +135,8 @@ input::placeholder, textarea::placeholder {
   display: flex;
 }
 
+
+
 .note-item__delete-button,.note-item__archive-button {
   display: block;
   width: 100%;
@@ -163,6 +164,14 @@ input::placeholder, textarea::placeholder {
 
 .note-item__delete-button:hover {
   color: #b00020;
+}
+
+.note-input__submit-button {
+  color: #9CFF52;
+}
+
+.note-input__reset-button {
+  color: #ff5f52;
 }
 
 @media only screen and (min-width: 500px) {

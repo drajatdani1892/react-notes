@@ -14,43 +14,56 @@ class NoteInput extends React.Component {
         this.onTitleChangeEventHandler = this.onTitleChangeEventHandler.bind(this);
         this.onBodyChangeEventHandler = this.onBodyChangeEventHandler.bind(this);
         this.onSubmitEventHandler = this.onSubmitEventHandler.bind(this);
+        this.onResetEventHandler = this.onResetEventHandler.bind(this);
     }
 
     onTitleChangeEventHandler(event) {
-        this.setState((prevState) => {
+        this.setState(() => {
             return {
-                ...prevState,
                 title: event.target.value,
             };
         });
     }
 
     onBodyChangeEventHandler(event) {
-        this.setState((prevState) => {
+        this.setState(() => {
             return {
-                ...prevState,
                 body: event.target.value,
             };
         });
     }
 
-    onSubmitEventHandler(event) {
+    onSubmitEventHandler(event){
+            event.preventDefault();
+            this.props.addNote(this.state);
+    }
+
+    onResetEventHandler(event) {
         event.preventDefault();
-        this.props.addNote(this.state);
+        this.setState({
+                title: "",
+                body: "",
+        });
     }
 
     render() {
         return (
-            <form className="note-input" onSubmit={this.onSubmitEventHandler}>
+        <div className="note-input">
+            <h2>Buat Catatan</h2>
+            <form onSubmit={this.onSubmitEventHandler} onReset={this.onResetEventHandler}>
                 <input type="text" className="note-input__title" placeholder="Tulis Judul" value={this.state.title} onChange={this.onTitleChangeEventHandler}/>
-                <input type="text" className="note-input__body" placeholder="Tulis note anda" value={this.state.body} onChange={this.onBodyChangeEventHandler}/>
-                <button type="submit" className="note-input__action-submit">
+                <textarea type="text" className="note-input__body" placeholder="Tulis note anda" value={this.state.body} onChange={this.onBodyChangeEventHandler}>
+                </textarea>
+            <div className="note-item__action">
+            <button type="submit" className="note-input__submit-button">
               Simpan
             </button>
-            <button type="reset" className="note-input__action-reset">
+            <button type="reset" className="note-input__reset-button">
               Reset
             </button>
+          </div>
             </form>
+        </div>
         );
     }
 }

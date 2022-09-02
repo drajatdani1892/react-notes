@@ -2,9 +2,14 @@ import React from "react";
 import NoteItem from "./NoteItem";
 
 function NoteList({ notes,onDelete }){
+  if (notes.length === 0) {
+    return (
+      <p>Arsip tidak ada</p>
+    )
+  }
+
   return(
     <div className="note-app__body">
-       <h2>Catatan Aktif</h2>
     <div className="notes-list">
       {
         notes.map((note) => (
