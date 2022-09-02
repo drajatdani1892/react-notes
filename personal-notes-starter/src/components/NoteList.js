@@ -1,10 +1,19 @@
 import React from "react";
 import NoteItem from "./NoteItem";
 
-function NoteList({ notes,onDelete }){
+function NoteList({ notes,onDelete,onArchived,keyword }){
+  if (notes.length > 0) {
+    notes = notes.filter((note) => {
+      if (keyword === "") {
+        return note;
+      }
+      return note.title.toLowerCase().includes(keyword.toLowerCase());
+    });
+  }
+
   if (notes.length === 0) {
     return (
-      <p>Arsip tidak ada</p>
+      <p className="notes-list__empty-message">Arsip tidak ada</p>
     )
   }
 
@@ -13,7 +22,7 @@ function NoteList({ notes,onDelete }){
     <div className="notes-list">
       {
         notes.map((note) => (
-          <NoteItem key={note.id} {...note} onDelete={onDelete} />
+          <NoteItem key={note.id} {...note} onDelete={onDelete} onArchived={onArchived} />
           ))
         }
     </div>
