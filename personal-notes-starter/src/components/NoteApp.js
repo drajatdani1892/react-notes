@@ -41,7 +41,7 @@ class NoteApp extends React.Component{
                 <NoteBody
                     notes={this.state.notes}
                     keyword={this.state.keyword}
-                    onDelete={this.onDeleteEventHandler}
+                    onDelete={this.onDeleteHandler}
                     onArchived={this.onArchivedEventHandler}
                     addNote={this.onAddNoteHandler}
                     />
