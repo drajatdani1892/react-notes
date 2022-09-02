@@ -20,7 +20,7 @@ class NoteApp extends React.Component{
         return (
             <div className="note-app">
                 <NoteHeader/>
-                <NoteList notes={this.state.notes} />
+                <NoteList notes={this.state.notes} onDelete={this.onDeleteHandler} />
             </div>
         );
     }
