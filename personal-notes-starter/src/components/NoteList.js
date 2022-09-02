@@ -4,7 +4,7 @@ import NoteItem from "./NoteItem";
 function NoteList({ notes,onDelete }){
   return(
     <div className="note-app__body">
-    <h2>Catatan Aktif</h2>
+       <h2>Catatan Aktif</h2>
     <div className="notes-list">
       {
         notes.map((note) => (
